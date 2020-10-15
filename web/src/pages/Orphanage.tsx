@@ -10,6 +10,8 @@ import api from "../services/api";
 
 import '../styles/pages/orphanage.css';
 
+import heartsBanner from '../images/Hearts-Banner.png';
+
 interface Orphanage {
   latitude: number;
   longitude: number;
@@ -33,8 +35,6 @@ export default function Orphanage() {
   const [orphanage, setOrphanage] = useState<Orphanage>();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  console.log(params);
-
   useEffect(() => {
     api.get(`orphanages/${params.id}`).then(response => {
       setOrphanage(response.data);
@@ -47,30 +47,39 @@ export default function Orphanage() {
     );
   }
 
+  // orphanage.images[activeImageIndex].url === undefined ? console.log('Não tem imagens') : console.log('Tem imagens');
+
   return (
     <div id="page-orphanage">
       <Sidebar />
 
       <main>
         <div className="orphanage-details">
-          <img src={orphanage.images[activeImageIndex].url} alt={orphanage.name} />
+          {orphanage.images[activeImageIndex] === undefined ? (
+            <img src={heartsBanner} alt={orphanage.name} />
+          ) : (
+              <React.Fragment>
+                <img src={orphanage.images[activeImageIndex].url} alt={orphanage.name} />
 
-          <div className="images">
-            {orphanage.images.map((image, index) => {
-              return (
-                <button
-                 key={image.id}
-                 className={activeImageIndex === index ? 'active' : ''}
-                 type="button"
-                 onClick={() => {
-                   setActiveImageIndex(index)
-                 }}
-                >
-                  <img src={image.url} alt={orphanage.name} />
-                </button>
-              );
-            })}
-          </div>
+                <div className="images">
+                  {orphanage.images.map((image, index) => {
+                    return (
+                      <button
+                        key={image.id}
+                        className={activeImageIndex === index ? 'active' : ''}
+                        type="button"
+                        onClick={() => {
+                          setActiveImageIndex(index)
+                        }}
+                      >
+                        <img src={image.url} alt={orphanage.name} />
+                      </button>
+                    );
+                  })}
+                </div>
+              </React.Fragment>
+            )}
+
 
           <div className="orphanage-details-content">
             <h1>{orphanage.name}</h1>
