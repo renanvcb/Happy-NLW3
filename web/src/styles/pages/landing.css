@@ -43,7 +43,7 @@
 }
 
 .content-wrapper .location {
-  position: absolute;
+  /* position: absolute; */
   right: 0;
   top: 0;
 
@@ -54,6 +54,31 @@
   flex-direction: column;
 
   text-align: right;
+}
+
+.content-wrapper .login {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 222px;
+  height: 56px;
+  background: #12D4E0;
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.2s;
+  transition: color 0.2s;
+}
+
+.content-wrapper .login:hover {
+  background: #96FEFF;
+  color: #15C3D6;
 }
 
 .content-wrapper .location strong {
@@ -76,7 +101,7 @@
   justify-content: center;
 
   transition: background-color 0.2s;
-  transition: color 0.1s;
+  transition: color 0.2s;
 }
 
 .content-wrapper .enter-app:hover {
