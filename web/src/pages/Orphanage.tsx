@@ -47,8 +47,6 @@ export default function Orphanage() {
     );
   }
 
-  // orphanage.images[activeImageIndex].url === undefined ? console.log('Não tem imagens') : console.log('Tem imagens');
-
   return (
     <div id="page-orphanage">
       <Sidebar />
@@ -116,6 +114,7 @@ export default function Orphanage() {
             <div className="open-details">
               <div className="hour">
                 <FiClock size={32} color="#15B6D6" />
+                Horário de visitas <br/>
                 {orphanage.opening_hours}
               </div>
               {orphanage.open_on_weekends ? (

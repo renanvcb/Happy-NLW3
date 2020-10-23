@@ -50,6 +50,22 @@ export class createOrphanages1602626028165 implements MigrationInterface {
           type: 'boolean',
           default: false,
         },
+        {
+          name: 'whatsapp',
+          type: 'text',
+        },
+        {
+          name: 'user_id',
+          type: 'integer',
+        },
+      ],
+      foreignKeys: [
+        {
+          name: 'ophanageUser',
+          columnNames: ['user_id'],
+          referencedTableName: 'users',
+          referencedColumnNames: ['id'],
+        }
       ]
     }))
   }
